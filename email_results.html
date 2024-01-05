@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Parsing Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        li {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Parsing Results</h1>
+    <ul>
+        {% for email_result in email_results %}
+            <li>
+                <strong>Subject:</strong> {{ email_result.subject }}<br>
+                <strong>Sender:</strong> {{ email_result.sender }}<br>
+                <strong>Date Sent:</strong> {{ email_result.date_sent }}<br>
+                <strong>Body:</strong><br>
+                {{ email_result.body|safe }}<br>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>
